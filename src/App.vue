@@ -14,14 +14,14 @@ onMounted(() => {
   let intervalID;
   carousel = new bootstrap.Carousel(myCarousel);
   console.log("carousel", carousel);
-  window.addEventListener("load", function () {
+  window.addEventListener("load",  () =>{
     fillCarouselIndicator(1);
   });
-  myCarousel.addEventListener("slide.bs.carousel", function (e) {
+  myCarousel.addEventListener("slide.bs.carousel", (e) =>{
     let index = e.to;
     fillCarouselIndicator(++index);
   });
-  function fillCarouselIndicator(index) {
+  const fillCarouselIndicator = (index) => {
     let i = 0;
     for (const carouselIndicator of carouselIndicators) {
       carouselIndicator.style.width = 0;
@@ -29,7 +29,7 @@ onMounted(() => {
     clearInterval(intervalID);
     carousel.pause();
 
-    intervalID = setInterval(function () {
+    intervalID = setInterval(() =>{
       i++;
 
       myCarousel.querySelector(
@@ -41,7 +41,7 @@ onMounted(() => {
         carousel.next();
       }
     }, 50);
-  }
+  };
 });
 </script>
 
